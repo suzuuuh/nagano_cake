@@ -1,5 +1,5 @@
   Admin.create!(
-    email: "a@a"## 任意のメールアドレス,
+    email: "a@a",## 任意のメールアドレス
     password: "hiii84"## 任意のパスワード
   )
 
