@@ -8,7 +8,7 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  
+
 
   # POST /resource/sign_in
   # def create
