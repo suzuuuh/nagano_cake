@@ -8,9 +8,10 @@
     <div class="row">
     <table class="table">
       <tbody>
-        <h5>登録情報</h5>
+        <h6>登録情報</h6>
+
           <div class="form-group">
-            <%= link_to "編集する" @customer_edit_path, class:"btn btn-success" %>
+            <%= link_to "編集する ", customers_my_page_edit_path, class:"btn btn-outline-primary btn-sm" %>
           </div>
 
   <p class="notice"></p>
@@ -57,9 +58,14 @@
       </tbody>
     </table>
 
-    <h5>注文履歴</h5>
-      <div class="form-group">
-        <%= link_to "一覧を見る" @customer_edit_path, class:"btn btn-success" %>
+    <p class="notice"></p>
+      <div class="container">
+        <div class="row">
+          <h6>注文履歴</h6>
+            <div class="form-group">
+              <%= link_to "一覧を見る", items_path, class:"btn btn-outline-success btn-sm" %>
+            </div>
+        </div>
       </div>
 
 

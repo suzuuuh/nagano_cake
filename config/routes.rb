@@ -56,10 +56,9 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get 'about'=>'homes#about'
     resources :items, only: [:index, :show]
-    resources :sessions, only: [:create, :new, :destroy]
-    get "customers/edit" => "customers#edit"
+    get "customers/my_page/edit" => "customers#edit"
     get "customers/my_page" => "customers#show"
-    get "customers" => "customers#update"
+    patch "customers/my_page" => "customers#update"
     get "customers/confirm" => "customers#confirm"
     get "customers/withdraw" => "customers#withdraw"
     resources :cart_items, only: [:index, :update, :destroy, :create]
