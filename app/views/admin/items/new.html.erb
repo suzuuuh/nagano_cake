@@ -1,0 +1,44 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h4>商品新規登録</h4>
+      <%= form_with model: items,url: admin_items_new_path, do |f| %>
+        <table class="table">
+              <tbody>
+                <tr>
+                  <th>
+                    商品画像
+                  </th>
+                  <td>
+
+
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    商品名
+                  </th>
+                  <td>
+                  <%= f.text_field :name %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>商品説明</th>
+                  <td>
+                  <%= f.text_field :introduction %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>税抜価格</th>
+                  <td>
+                  <%= f.text_field :price %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="form-group">
+              <%= f.submit '新規登録', class:"btn btn-success" %>
+              </div>
+            <%# end %>
