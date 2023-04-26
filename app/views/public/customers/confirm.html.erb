@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <%= form_with model: @customer,url: customers_withdraw_path, method: :patch do |f| %>
         <p>
             本当に退会しますか？</br>
             退会すると、会員登録情報や</br>
@@ -10,4 +11,8 @@
         </p>
 
         <%= link_to "退会しない", customers_my_page_path, class:"btn btn-success btn-sm" %>
-        <%= link_to "退会する", public_customers_withdraw_path, class:"btn btn-danger btn-sm" method: :patch %>
+        <div class="form-group">
+          <%= f.submit "退会する", class:"btn btn-danger btn-sm" %>
+        </div>
+
+        <% end %>

@@ -60,7 +60,7 @@ Rails.application.routes.draw do
     get "customers/my_page" => "customers#show"
     patch "customers/my_page" => "customers#update"
     get "customers/confirm" => "customers#confirm"
-    get "customers/withdraw" => "customers#withdraw"
+    patch "customers/withdraw" => "customers#withdraw"
     resources :cart_items, only: [:index, :update, :destroy, :create]
     get "cart_items/all_destroy" => "cart_items#all_destroy"
     resources :orders, only: [:new, :create, :index, :show]
