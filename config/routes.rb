@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'items/index'
-    get 'items/edit'
-    get 'items/new'
-    get 'items/show'
-  end
-  namespace :admin do
     get 'orders/show'
   end
   namespace :admin do
@@ -13,14 +7,6 @@ Rails.application.routes.draw do
     get 'customers/show'
     get 'customers/edit'
     get 'customers/update'
-  end
-  namespace :admin do
-    get 'cart_items/index'
-    get 'cart_items/new'
-    get 'cart_items/create'
-    get 'cart_items/show'
-    get 'cart_items/edit'
-    get 'cart_items/update'
   end
   namespace :public do
     get 'orders/new'
@@ -77,7 +63,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    resources :cart_items, only: [:index, :show, :edit, :update, :new, :create]
+    resources :items, only: [:index, :show, :edit, :update, :new, :create]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show]
 
