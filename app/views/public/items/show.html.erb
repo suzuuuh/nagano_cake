@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+    	<%= form_with model: CartItem.new, url: cart_items_path do |f| %>
     		 <%= image_tag @item.get_image %>
         <table class="table">
 	      <tbody>
@@ -16,11 +17,16 @@
 	              ¥<%= @item.price %>
 	            </td>
 	          </tr>
-
-
 	      </tbody>
 	    </table>
 
+			<%= f.select :amount, *[1..10] %>
+			<%= f.hidden_field :item_id, :value => @item.id %>
+
+			<div class="form-group">
+         <%= f.submit "カートに入れる", class:"btn btn-secondary" %>
+      </div>
+			<% end %>
 
 	   </div>
 	   </div>
