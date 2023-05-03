@@ -1,4 +1,7 @@
- <div class="col-md-5 offset-md-1">
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>ショッピングカート</h2>
       <%= link_to "カートを空にする", cart_items_all_destroy_path, class:"btn btn-danger", method: :delete %>
 
@@ -35,9 +38,22 @@
         </tbody>
       </table>
 
-      <%= @total %>
+      <table>
+        <tr>
+          <th>
+            合計金額
+          </th>
+          <td>
+            ¥<%= @total %>
+          </td>
+        </tr>
+      </table>
+
 
       <%= link_to "買い物を続ける", items_path, class:"btn btn-primary" %>
 
 
       <%= link_to "情報入力", new_order_path, class:"btn btn-secondary" %>
+      </div>
+    </div>
+  </div>

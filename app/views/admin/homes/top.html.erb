@@ -1,2 +1,40 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h3>注文履歴一覧</h3>
+        <table>
+          <thead>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th></th>
+            <th></th>
+          </thead>
+          <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+            <tr>
+              <td>
+                <%= image_tag cart_item.item.get_image %>
+                <%= cart_item.item.name %>
+              </td>
+              <td><%= cart_item.item.with_tax_price%></td>
+              <td>
+                <%= f.select :amount, *[1..10] %>
+  			        <%= f.hidden_field :item_id, :value => cart_item.item.id %>
+  			        <div class="form-group">
+                  <%= f.submit "変更", class:"btn btn-secondary" %>
+                </div>
+  			      </td>
+              <td><%= cart_item.subtotal%></td>
+                <% @total +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
+              <td><%= link_to "削除", cart_item_path(cart_item), class:"btn btn-danger", method: :delete %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
