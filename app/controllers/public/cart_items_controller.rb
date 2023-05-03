@@ -9,7 +9,7 @@ class Public::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     if cart_item.update!(cart_item_params)
       flash[:notice] = "You have created successfully."
-    redirect_to cart_item_path(cart_item)
+    redirect_to cart_items_path
     else
       render :index
     end

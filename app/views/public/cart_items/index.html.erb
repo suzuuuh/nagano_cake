@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         <% @cart_items.each do |cart_item| %>
-        <%= form_with model: cart_item, url: cart_item_path(cart_item) do |f| %>
+        <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
           <tr>
             <td>
               <%= image_tag cart_item.item.get_image %>
@@ -35,4 +35,9 @@
         </tbody>
       </table>
 
-      <%= link_to "買い物を続ける", admin_items_path, class:"btn btn-primary" %>
+      <%= @total %>
+
+      <%= link_to "買い物を続ける", items_path, class:"btn btn-primary" %>
+
+
+      <%= link_to "情報入力", new_order_path, class:"btn btn-secondary" %>
