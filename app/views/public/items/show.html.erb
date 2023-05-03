@@ -14,7 +14,7 @@
 	              <%= @item.introduction %>
 	            </td>
 	            <td>
-	              ¥<%= @item.price %>
+	              ¥<%= (@item.price * 1.1).floor %>(税込価格）
 	            </td>
 	          </tr>
 	      </tbody>

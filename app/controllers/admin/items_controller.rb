@@ -30,7 +30,7 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:notice] = "You have created book successfully."
+      flash[:notice] = "You have created successfully."
     redirect_to admin_item_path(@item.id)
     else
       render :edit
