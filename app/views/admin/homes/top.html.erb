@@ -12,24 +12,17 @@
             <th></th>
           </thead>
           <tbody>
-          <% @cart_items.each do |cart_item| %>
-          <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+          <% @orders.each do |order| %>
             <tr>
               <td>
-                <%= image_tag cart_item.item.get_image %>
-                <%= cart_item.item.name %>
+                <%= order.created_at %>
               </td>
-              <td><%= cart_item.item.with_tax_price%></td>
+              <td><%= order.customer.name %></td>
               <td>
-                <%= f.select :amount, *[1..10] %>
-  			        <%= f.hidden_field :item_id, :value => cart_item.item.id %>
-  			        <div class="form-group">
-                  <%= f.submit "変更", class:"btn btn-secondary" %>
-                </div>
+                <%= order.total_amount %>
   			      </td>
-              <td><%= cart_item.subtotal%></td>
-                <% @total +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
-              <td><%= link_to "削除", cart_item_path(cart_item), class:"btn btn-danger", method: :delete %></td>
+              <td></td>
+              <td></td>
             </tr>
             <% end %>
           </tbody>

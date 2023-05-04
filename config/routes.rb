@@ -1,35 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/thanks'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/all_destroy'
-    get 'cart_items/create'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/confirm'
-    get 'customers/withdraw'
-  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 
@@ -56,7 +26,7 @@ Rails.application.routes.draw do
     delete "cart_items/all_destroy" => "cart_items#all_destroy"
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :create, :index, :show]
-    get "orders/confirm" => "orders#confirm"
+    post "orders/confirm" => "orders#confirm"
     get "orders/thanks" => "orders#thanks"
 
   end
