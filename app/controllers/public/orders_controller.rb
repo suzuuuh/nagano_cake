@@ -36,6 +36,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = current_customer.orders.ids
+    @postage = 800
   end
 
   private

@@ -1,7 +1,7 @@
 <p id="notice"></p>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-15 col-md-12 col-lg-10 px-5 px-sm-8 mx-auto">
       <h3>注文履歴一覧</h3>
         <table>
           <thead>
@@ -18,19 +18,24 @@
                 <%= order.created_at %>
               </td>
               <td>
+                <%= order.post_code %>
+                <%= order.address %>
+                <%= order.name %>
                 <%#= order.address_display %>
                 <%#= f.hidden_field :post_code, value: order.post_code %>
                 <%#= f.hidden_field :address, value: order.address %>
                 <%#= f.hidden_field :name, value: order.name %>
               </td>
               <td>
-                <%= order.order_items.id %>
+                <%#= order.order_items.id %>
   			      </td>
               <td>
                 ¥<%= order.billing_amount %>
               </td>
               <td>
-                <%#= f.submit "表示する", class:"btn btn-primary" %>
+                <div class="form-group">
+                  <%= link_to "表示する", order_path(order.id), class:"btn btn-primary btn-sm" %>
+                </div>
               </td>
             </tr>
             <% end %>
