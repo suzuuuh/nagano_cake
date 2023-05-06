@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'about'=>'homes#about'
     resources :items, only: [:index, :show]
     get "customers/my_page/edit" => "customers#edit"
+    get "orders/thanks" => "orders#thanks"
     get "customers/my_page" => "customers#show"
     patch "customers/my_page" => "customers#update"
     get "customers/confirm" => "customers#confirm"
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :create, :index, :show]
     post "orders/confirm" => "orders#confirm"
-    get "orders/thanks" => "orders#thanks"
+
 
   end
 

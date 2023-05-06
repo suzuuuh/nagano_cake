@@ -1,2 +1,43 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h3>注文履歴一覧</h3>
+        <table>
+          <thead>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払金額</th>
+            <th>注文詳細</th>
+          </thead>
+          <tbody>
+          <% @order.each do |order| %>
+            <tr>
+              <td>
+                <%= order.created_at %>
+              </td>
+              <td>
+                <%#= order.address_display %>
+                <%#= f.hidden_field :post_code, value: order.post_code %>
+                <%#= f.hidden_field :address, value: order.address %>
+                <%#= f.hidden_field :name, value: order.name %>
+              </td>
+              <td>
+                <%= order.order_items.id %>
+  			      </td>
+              <td>
+                ¥<%= order.billing_amount %>
+              </td>
+              <td>
+                <%#= f.submit "表示する", class:"btn btn-primary" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+

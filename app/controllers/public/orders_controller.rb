@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
   end
@@ -16,17 +18,21 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
+    @cart_items = current_customer.cart_items
     @order.customer_id = current_customer.id
+    @order.postage = 800
+    @order.billing_amount = @order.postage + @cart_items.sum(&:subtotal)
     if @order.save
     flash[:notice] = "You have created book successfully."
-    redirect_to order_path
+    redirect_to orders_thanks_path
     else
       render :confirm
     end
   end
 
   def index
+    @order = current_customer.orders
   end
 
   def show
@@ -36,7 +42,7 @@ class Public::OrdersController < ApplicationController
 
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :post_code, :address, :name)
   end
 
 
