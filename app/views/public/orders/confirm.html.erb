@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h3>注文情報確認</h3>
-       <%= form_with model: @order,url: orders_confirm_path do |f| %>
+       <%= form_with model: @order,url: orders_thanks_path do |f| %>
           <table>
             <thead>
               <th>商品名</th>
@@ -29,17 +29,16 @@
                   <% @total +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
               </tr>
               <% end %>
-              <% end %>
             </tbody>
           </table>
 
           <table>
             <tr>
               <th>
-
+                送料
               </th>
               <td>
-                送料
+                ¥<%= @postage %>
               </td>
             </tr>
             <tr>
@@ -55,9 +54,36 @@
                 請求金額
               </th>
               <td>
-
+                ¥<%= @total + @postage %>
               </td>
             </tr>
           </table>
+
+          <table>
+            <tr>
+              <th>
+                支払方法
+              </th>
+              <td>
+                <%= Order.payment_methods_i18n[@order.payment_method] %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                お届け先
+              </th>
+              <td>
+                <%= current_customer.address_display %>
+              </td>
+            </tr>
+            <tr class="form-group">
+              <td>
+
+                <%= f.submit "注文を確定する", class:"btn btn-success" %>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+
 
 
