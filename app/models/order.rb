@@ -5,7 +5,7 @@ class Order < ApplicationRecord
   enum payment_method: { credit_card: 0, transfer: 1 }
 
   def total_amount
-    order_items.all.pluck(:total_amount).sum
+    order_items.all.pluck(:amount).sum
     # rails pluck sum
   end
 end

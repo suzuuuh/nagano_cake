@@ -24,6 +24,14 @@ class Public::OrdersController < ApplicationController
     @order.postage = 800
     @order.billing_amount = @order.postage + @cart_items.sum(&:subtotal)
     if @order.save
+      @cart_items.each do |cart_item|
+        order_item = OrderItem.new
+        order_item.order_id = @order.id
+        order_item.item_id = cart_item.item.id
+        order_item.price = cart_item.item.price
+        order_item.amount = cart_item.amount
+        order_item.save
+      end
     flash[:notice] = "You have created book successfully."
     redirect_to orders_thanks_path
     else
@@ -36,8 +44,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = current_customer.orders.ids
-    @postage = 800
+    @order = Order.find(params[:id])
   end
 
   private

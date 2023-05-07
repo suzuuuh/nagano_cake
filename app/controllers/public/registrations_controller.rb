@@ -8,7 +8,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-
+  def after_signed_up_path_for(resource)
+    root_path
+  end
   # POST /resource
   # def create
   #   super

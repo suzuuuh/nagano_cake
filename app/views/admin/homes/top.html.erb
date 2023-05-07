@@ -1,9 +1,9 @@
 <p id="notice"></p>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-md-8 offset-md-1">
       <h3>注文履歴一覧</h3>
-        <table>
+        <table class="table">
           <thead>
             <th>購入日時</th>
             <th>購入者</th>
@@ -15,9 +15,9 @@
           <% @orders.each do |order| %>
             <tr>
               <td>
-                <%= order.created_at %>
+                <%= link_to order.created_at,admin_order_path(order.id) %>
               </td>
-              <td><%= order.customer.name %></td>
+              <td><%= order.customer.last_name + order.customer.first_name %></td>
               <td>
                 <%= order.total_amount %>
   			      </td>

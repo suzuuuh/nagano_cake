@@ -75,9 +75,9 @@
               </th>
               <td>
                 <%= current_customer.address_display %>
-                <%= f.hidden_field :post_code, value: @order.post_code %>
-                <%= f.hidden_field :address, value: @order.address %>
-                <%= f.hidden_field :name, value: @order.name %>
+                <%= f.hidden_field :post_code, value: current_customer.postal_code %>
+                <%= f.hidden_field :address, value: current_customer.address %>
+                <%= f.hidden_field :name, value: current_customer.last_name + current_customer.first_name %>
               </td>
             </tr>
             <tr class="form-group">

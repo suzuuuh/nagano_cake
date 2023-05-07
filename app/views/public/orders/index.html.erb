@@ -27,7 +27,9 @@
                 <%#= f.hidden_field :name, value: order.name %>
               </td>
               <td>
-                <%#= order.order_items.id %>
+                <% order.order_items.each do |order_item| %>
+                <%= order_item.item.name %>
+                <% end %>
   			      </td>
               <td>
                 ¥<%= order.billing_amount %>
