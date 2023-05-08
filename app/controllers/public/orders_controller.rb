@@ -33,6 +33,7 @@ class Public::OrdersController < ApplicationController
         order_item.save
       end
     flash[:notice] = "You have created book successfully."
+    current_customer.cart_items.destroy_all
     redirect_to orders_thanks_path
     else
       render :confirm
