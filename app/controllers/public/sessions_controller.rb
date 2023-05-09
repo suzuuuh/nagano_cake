@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-
+  #before_action :authenticate_customer!, except: [:top]
   # before_action :configure_sign_in_params, only: [:create]
   before_action :customer_state, only: [:create]
 
@@ -19,7 +19,7 @@ class Public::SessionsController < Devise::SessionsController
     # 【処理内容3】
   end
 
-  def after_signed_in_path_for(resource)
+  def after_sign_in_path_for(resource)
     root_path
   end
 
