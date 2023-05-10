@@ -1,18 +1,19 @@
 <p id="notice"></p>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+    <div class="col-sm-20 col-md-5 col-lg-5 px-8 px-sm-0 mx-auto mt-10">
       <%= form_with model: @customer,url: customers_withdraw_path, method: :patch do |f| %>
-        <p>
+        <p class="d-flex text-center justify-content-center 13px">
             本当に退会しますか？</br>
             退会すると、会員登録情報や</br>
             これまでの購入履歴が閲覧できなくなります。</br>
             退会する場合は、「退会する」をクリックしてください。</br>
         </p>
-
+        <div class="d-flex flex-nowrap center">
         <%= link_to "退会しない", customers_my_page_path, class:"btn btn-success btn-sm" %>
         <div class="form-group">
           <%= f.submit "退会する", class:"btn btn-danger btn-sm" %>
+        </div>
         </div>
 
         <% end %>

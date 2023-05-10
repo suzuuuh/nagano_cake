@@ -7,11 +7,11 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
 
-  validates :last_name, presence: true
-  validates :first_name, presence: true
+  validates :last_name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :first_name, presence: true, length: { minimum: 2, maximum: 20 }
   validates :postal_code, presence: true
-  validates :last_name_kana, presence: true
-  validates :first_name_kana, presence: true
+  validates :last_name_kana, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :first_name_kana, presence: true, length: { minimum: 2, maximum: 20 }
   validates :address, presence: true
   validates :telephone_number, presence: true
 
