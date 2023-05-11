@@ -1,7 +1,7 @@
 <p id="notice"></p>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-md-8 offset-md-1">
       <h3>注文情報確認</h3>
        <%= form_with model: @order,url: orders_path do |f| %>
           <table>
@@ -16,11 +16,11 @@
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td>
-                  <%= image_tag cart_item.item.get_image %>
+                  <%= image_tag cart_item.item.get_image, size: "100x100" %>
                   <%= cart_item.item.name %>
                 </td>
                 <td>
-                  <%= cart_item.item.with_tax_price%>
+                  ¥<%= cart_item.item.with_tax_price%>
                 </td>
                 <td>
                   <%= cart_item.amount %>

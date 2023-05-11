@@ -6,6 +6,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    if params[:order][:payment_method].nil?
+      redirect_to new_order_path
+    end
     @postage = 800
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
