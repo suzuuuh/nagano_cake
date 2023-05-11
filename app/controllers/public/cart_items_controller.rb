@@ -30,16 +30,24 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_items = CartItem.all
-    @customer = current_customer
-    @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id = current_customer.id
-    if @cart_item.save
-    flash[:notice] = "You have created book successfully."
-    redirect_to cart_items_path
+    @cart_items = current_customer.cart_items
+    @in_item = @cart_items.find_by(item_id: params[:cart_item][:item_id])
+    if @in_item
+      @amount = @in_item.amount.to_i + params[:cart_item][:amount].to_i
+      @in_item.update(amount: @amount)
+      redirect_to cart_items_path
     else
-      render :index
+      @customer = current_customer
+      @cart_item = CartItem.new(cart_item_params)
+      @cart_item.customer_id = current_customer.id
+      if @cart_item.save
+      flash[:notice] = "You have created book successfully."
+      redirect_to cart_items_path
+      else
+        render :index
+      end
     end
+
   end
 
   private
