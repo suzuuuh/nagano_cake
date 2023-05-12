@@ -11,7 +11,7 @@
                 購入者
               </th>
               <td>
-                <%= @order.name %>
+                <%= link_to @order.name, admin_order_path(order.id) %>
               </td>
             </tr>
             <tr>
@@ -19,7 +19,7 @@
                 注文日
               </th>
               <td>
-                <%= @order.created_at %>
+                <%= @order.created_at.strftime('%Y/%m/%d') %>
               </td>
             </tr>
             <tr>
@@ -48,9 +48,9 @@
 
 
   <p class="notice"></p>
-          <div class="container">
-            <div class="row">
-            <table class="table">
+  <div class="row" style:"margin-left: 0; margin-right: 0;">
+    <div class="col-5 ml-5">
+            <table border="1" width="30%" class="table">
               <tbody>
                   <tr>
                     <th>商品名</th>
@@ -64,42 +64,38 @@
                       <%= order_item.item.name %>
                     </td>
                     <td>
-                      <%= (order_item.price * 1.1).floor %>
+                      ¥<%= (order_item.price * 1.1).floor %>
                     </td>
                     <td>
                       <%= order_item.amount %>
                     </td>
                     <td>
-                      <%= (order_item.price * 1.1).floor * order_item.amount %>
+                      ¥<%= (order_item.price * 1.1).floor * order_item.amount %>
                     </td>
                   </tr>
                   <% end %>
                 </tbody>
               </table>
             </div>
-          </div>
-
-      <p class="notice"></p>
-        <div class="container">
-          <div class="row">
-          <table class="table">
+          <div class="col-5 ml-5">
+          <table width="30%" class="table" class="justify-self-flex-end">
             <tbody>
                 <tr>
                   <th>商品合計</th>
                   <td>
-                    <%= @order.billing_amount - @order.postage %>
+                    ¥<%= @order.billing_amount - @order.postage %>
                   </td>
                 </tr>
                 <tr>
                   <th>送料</th>
                   <td>
-                    <%= @order.postage %>
+                    ¥<%= @order.postage %>
                   </td>
                 </tr>
                 <tr>
                   <th>請求額合計</th>
                   <td>
-                    <%= @order.billing_amount %>
+                    ¥<%= @order.billing_amount %>
                     <%#= Order.payment_methods_i18n[@order.payment_method] %>
                     <%#= f.hidden_field :payment_method, value: @order.payment_method %>
                   </td>
@@ -107,6 +103,7 @@
               </tbody>
             </table>
           </div>
+        </div>
 
 
 
