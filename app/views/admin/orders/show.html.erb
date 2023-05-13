@@ -11,7 +11,7 @@
                 購入者
               </th>
               <td>
-                <%= link_to @order.name, admin_order_path(order.id) %>
+                <%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer.id) %>
               </td>
             </tr>
             <tr>

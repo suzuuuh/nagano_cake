@@ -25,7 +25,7 @@
                 <td>
                   <%= cart_item.amount %>
     			      </td>
-                <td><%= cart_item.subtotal%></td>
+                <td>¥<%= cart_item.subtotal%></td>
                   <% @total +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
               </tr>
               <% end %>
