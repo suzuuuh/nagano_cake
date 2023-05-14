@@ -12,7 +12,7 @@
         <div class="d-flex flex-nowrap center">
         <%= link_to "退会しない", customers_my_page_path, class:"btn btn-success btn-sm" %>
         <div class="form-group">
-          <%= f.submit "退会する", class:"btn btn-danger btn-sm" %>
+          <%= f.submit "退会する", class:"btn btn-danger btn-sm", "data-confirm" =>"本当に退会しますか？" %>
         </div>
         </div>
 
